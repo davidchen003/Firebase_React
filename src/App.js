@@ -21,6 +21,12 @@ function App() {
     await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
   }
 
+  const updateUser = async (id, age) => {
+    const userDoc = doc(db, "users", id);
+    const newFields = { age: age + 1 };
+    await updateDoc(userDoc, newFields);
+  };
+
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
@@ -41,10 +47,14 @@ function App() {
 
       {users.map((users) => {
         return (
-          <div key={users.id}> 
-            {" "} 
+          <div key={users.id}>
             <h1>Name: {users.name}</h1>
             <h1>Age: {users.age}</h1>
+            <button onClick={() => {
+                updateUser(users.id, users.age);}}
+            >
+              Increase Age
+            </button>
           </div>
         );
       })}

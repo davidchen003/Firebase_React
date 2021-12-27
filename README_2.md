@@ -48,6 +48,12 @@
 
 ## Create
 
-- but need to manual refresh the page to see the new entry displayed
+- but need to manually refresh the page to see the new entry displayed
 
 **Commit 2**
+
+## Update
+
+- also need to manually refresh to see the effect
+
+**Commit 3**
