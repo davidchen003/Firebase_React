@@ -14,6 +14,13 @@ function App() {
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "users"); // ref to "users" collection in the database
   
+  const [newName, setNewName] = useState("");
+  const [newAge, setNewAge] = useState(0);
+
+  const createUser = async () => {
+    await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+  }
+
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
@@ -26,6 +33,12 @@ function App() {
   
   return (
     <div className="App"> 
+      <input placeholder="Name..." onChange={(e) => {
+        setNewName(e.target.value);}} />
+      <input type="number" placeholder="Age..." onChange={(event) => {
+          setNewAge(event.target.value); }} />
+      <button onClick={createUser}>Create User</button>
+
       {users.map((users) => {
         return (
           <div key={users.id}> 

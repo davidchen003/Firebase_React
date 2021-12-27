@@ -1,6 +1,8 @@
 - [course video](https://www.youtube.com/watch?v=jCY6DH8F4oc)
 - [code](https://github.com/machadop1407/firebase-react-crud)
 
+- See [Fireship's course](https://www.youtube.com/watch?v=q5J5ho7YUhA) for hosting and emulators setup (which is not covered here).
+
 - `node_modules` folder will not be pushed to Github and may be deleted from local holder to (once project is done) to save space. Simple run `npm install` to rebuild it.
 
 - **CSS** totally ignored in this course
@@ -43,3 +45,9 @@
 - App.js
 
 **Commit 1**
+
+## Create
+
+- but need to manual refresh the page to see the new entry displayed
+
+**Commit 2**
