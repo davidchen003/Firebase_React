@@ -27,6 +27,11 @@ function App() {
     await updateDoc(userDoc, newFields);
   };
 
+  const deleteUser = async (id) => {
+    const userDoc = doc(db, "users", id);
+    await deleteDoc(userDoc);
+  };
+
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
@@ -45,15 +50,21 @@ function App() {
           setNewAge(event.target.value); }} />
       <button onClick={createUser}>Create User</button>
 
-      {users.map((users) => {
+      {users.map((user) => {
         return (
-          <div key={users.id}>
-            <h1>Name: {users.name}</h1>
-            <h1>Age: {users.age}</h1>
+          <div key={user.id}>
+            <h1>Name: {user.name}</h1>
+            <h1>Age: {user.age}</h1>
             <button onClick={() => {
-                updateUser(users.id, users.age);}}
+                updateUser(user.id, user.age);}}
             >
               Increase Age
+            </button>
+            <button
+              onClick={() => {
+                deleteUser(user.id);}}
+            >
+              Delete User
             </button>
           </div>
         );
