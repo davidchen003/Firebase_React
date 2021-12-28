@@ -61,3 +61,73 @@
 ## Delete
 
 **Commit 4**
+
+# Beyond video course
+
+## realtime update
+
+- so everytime database changes after any CRUD, the web page will be refreshed with the new data
+
+**Method 1**
+
+- add `window.location.reload(false)` to each button onClick function
+
+**Method 2**
+
+- use firebase query `onSnapShot`.
+
+**Commit 5**
+
+## deploy-hosting branch (B1)
+
+- https://fireship-demos-87aa8.web.app
+  or
+- fireship-demos-87aa8.firebaseapp.com
+
+- `npm install -g firebase-tools`, which we did in [fireship course](https://www.youtube.com/watch?v=q5J5ho7YUhA)
+- `firebase login` (following instructions for authentication)
+
+- `firebase init`
+
+  - what do you want to use as your public directory? **build**
+  - as a single-page-app? Yes
+
+- `npm run build`
+
+```
+    firebase_react_crud@0.1.0 build
+    react-scripts build
+
+    Creating an optimized production build...
+    Compiled with warnings.
+
+    src/App.js
+
+    Line 42:6:  React Hook useEffect has a missing dependency: 'usersCollectionRef'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+    Search for the keywords to learn more about each warning.
+    To ignore, add // eslint-disable-next-line to the line before.
+
+    The project was built assuming it is hosted at /.
+    You can control this with the homepage field in your package.json.
+
+    The build folder is ready to be deployed.
+    You may serve it with a static server:
+
+    npm install -g serve
+    serve -s build
+
+    Find out more about deployment here:
+    https://cra.link/deployment
+```
+
+- `firebase deploy`
+
+```
+    Deploy complete!
+
+    Project Console: https://console.firebase.google.com/project/fireship-demos-87aa8/overview
+    Hosting URL: https://fireship-demos-87aa8.web.app
+```
+
+**B1-1 Commit**
