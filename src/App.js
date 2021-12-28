@@ -8,6 +8,8 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  onSnapshot,
+  query,
 } from "firebase/firestore";
 
 function App() {
@@ -31,17 +33,15 @@ function App() {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
   };
-
+  
   useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));// "...": spread/get all the fields upto doc.data()
-    };
-
-    getUsers();
+    const q = query(usersCollectionRef)
+    onSnapshot(q, (snapshot) => {
+      setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    })
   }, []);
-  
-  
+
+
   return (
     <div className="App"> 
       <input placeholder="Name..." onChange={(e) => {

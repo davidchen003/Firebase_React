@@ -61,3 +61,19 @@
 ## Delete
 
 **Commit 4**
+
+# Beyond video course
+
+## realtime update
+
+- so everytime database changes after any CRUD, the web page will be refreshed with the new data
+
+**Method 1**
+
+- add `window.location.reload(false)` to each button onClick function
+
+**Method 2**
+
+- use firebase query `onSnapShot`.
+
+**Commit 5**
