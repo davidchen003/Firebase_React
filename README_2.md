@@ -15,7 +15,7 @@
 
 ## Firebase
 
-- `npm add firebase` (firebase's Project Settings instruction says `npm install firebase` )
+- `npm add firebase` or `npm install firebase` )
 - used the same `FirebaseBasics` Web app in `Fireship-Demos` project of my firebase account created for [Fireship's course](https://www.youtube.com/watch?v=q5J5ho7YUhA)
 
 - `src/firebase-config.js`, mostly copied from firebase Project Settings
@@ -90,3 +90,17 @@
 - click `Get Data` button, the firebase data will console.log out. `age/null` key/value pair will still be in the data file and show up in console. But if the `age` field is deleted at firebase, it's key/value pair will not be there.
 
 **Commit 6**
+
+# Branch - Dev World course
+
+- [video](https://www.youtube.com/watch?v=3ZEz-iposj8&list=PLpPVLI0A0OkJ-bu1zSiknRYEUIy33gCwp&index=1)
+
+- create `schools` collection in firebase
+- `app.js`
+- `@npm start`
+
+## onSnapshot
+
+- realtime update: anytime there is a change to firebase data, it will automatically reflected on web page
+
+**Commit B2-1** (branch 2, first commit)
