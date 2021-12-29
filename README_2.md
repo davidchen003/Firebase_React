@@ -77,3 +77,16 @@
 - use firebase query `onSnapShot`.
 
 **Commit 5**
+
+## loading JSON into firebase & reading firebase into JSON
+
+**import into firebase**
+
+- `MOCK_DATA.json` can have `null` entry on age (1st record), or missing the `age` key/value alltogether (2nd record)
+- click `Load Data` button, records in `MOCK_DATA.json` will be loaded into firebase and show up in web page
+
+**export out from firebase**
+
+- click `Get Data` button, the firebase data will console.log out. `age/null` key/value pair will still be in the data file and show up in console. But if the `age` field is deleted at firebase, it's key/value pair will not be there.
+
+**Commit 6**
