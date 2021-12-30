@@ -90,3 +90,20 @@
 - click `Get Data` button, the firebase data will console.log out. `age/null` key/value pair will still be in the data file and show up in console. But if the `age` field is deleted at firebase, it's key/value pair will not be there.
 
 **Commit 6**
+
+# NetNinja branch
+
+- [video series](https://www.youtube.com/watch?v=s1frrNxq4js&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb&index=5)
+- [code for different video in different branches](https://github.com/iamshaunjp/Getting-Started-with-Firebase-9/blob/lesson-4/src/index.js)
+
+- didn't implement:
+
+  - Use webpack (do "tree-shaking") instead of "create-react-app"
+  - select firebase "start in test mode", otherwise you won't be able to access your data (has to do with firebase "rules", which we'll learn later).
+
+- different methods of getting data
+  - async/wait
+  - promise/.then
+  - map(), forEach()
+
+**Commit B3-1**

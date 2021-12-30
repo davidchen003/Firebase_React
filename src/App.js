@@ -36,7 +36,8 @@ function App() {
   
   useEffect(() => {
     const q = query(usersCollectionRef)
-    onSnapshot(q, (snapshot) => {
+    onSnapshot(q, (snapshot) => { 
+    //onSnapshot enables auto update of the page whenever there is update in firebase
       setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     })
     // adding following comment to avoid warning of useEffect missing usersCollectionsRef dependency
@@ -51,17 +52,38 @@ function App() {
     ))
   }
 
-  // reading data from firebase
-  const getData = async() => {
-      const data = await getDocs(usersCollectionRef);
-      const result = data.docs.map((doc) => ({...doc.data()}))
-      console.log(result)
-    };
+  // reading data from firebase (manual update/refresh webpage)
 
-  const testFun = () => {
-    const result = ((4 > 5) ? "OK" : "null")
-    console.log(result)
-  }
+  // //version 1, async/wait, map
+  // const getData = async() => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     const result = data.docs.map((doc) => ({...doc.data()}))
+  //     console.log(result)
+  //   };
+
+  // //version 2, promise/.then
+  // const getData = () => {
+  //     getDocs(usersCollectionRef).then((item) => {
+  //       //const result = item.docs.map((doc) => ({...doc.data()})) // for adding more fields
+  //       const result = item.docs.map((doc) => (doc.data()))
+  //       console.log(result)
+  //     })
+  // };
+
+  // version 3, forEach
+  const getData = () => {
+    getDocs(usersCollectionRef)
+    .then((item) => {
+      let result = []
+      item.docs.forEach((doc) => {
+        result.push({...doc.data(), id:doc.id})
+      })
+      console.log(result)
+    })
+    .catch(err => { // this is optional
+      console.log(err.message)
+    })
+};
 
   return (
     <div className="App"> 
@@ -72,7 +94,6 @@ function App() {
       <button onClick={createUser}>Create User</button>
       <button onClick={loadData}>Load Data</button>
       <button onClick={getData}>Get Data</button>
-      <button onClick={testFun}>Test</button>
 
       {users.map((user) => {
         return (
