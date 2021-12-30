@@ -9,7 +9,10 @@ import {
   doc,
   onSnapshot,
   query,
-  getDocs
+  getDocs,
+  where,
+  orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
 
 function App() {
@@ -19,8 +22,16 @@ function App() {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState(0);
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+  const [users2, setUsers2] = useState([]);
+
+  // const createUser = async () => {
+  //   await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+  // }
+  const createUser = () => {
+    addDoc(usersCollectionRef, { name: newName, age: Number(newAge), createdAt: serverTimestamp() })
+      .then(() => { //this is optional 
+        console.log('new user added!')
+      })
   }
 
   const updateUser = async (id, age) => {
@@ -36,6 +47,7 @@ function App() {
   
   useEffect(() => {
     const q = query(usersCollectionRef)
+    //const q = query(usersCollectionRef, where("name", "==", "firstname"))
     onSnapshot(q, (snapshot) => { 
     //onSnapshot enables auto update of the page whenever there is update in firebase
       setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -72,13 +84,17 @@ function App() {
 
   // version 3, forEach
   const getData = () => {
-    getDocs(usersCollectionRef)
+    const q2 = query(usersCollectionRef, where("age", ">", 9));
+    // const q2 = query(usersCollectionRef, where("age", ">", 9), orderBy("age","desc"))
+    // const q2 = query(usersCollectionRef, orderBy("createdAt")) // default is ascending
+    getDocs(q2)
     .then((item) => {
       let result = []
       item.docs.forEach((doc) => {
         result.push({...doc.data(), id:doc.id})
       })
-      console.log(result)
+      //console.log(result) // for query w/o restriction, can be used for export data
+      setUsers(result) // web page update with query result
     })
     .catch(err => { // this is optional
       console.log(err.message)
@@ -93,7 +109,7 @@ function App() {
           setNewAge(event.target.value); }} />
       <button onClick={createUser}>Create User</button>
       <button onClick={loadData}>Load Data</button>
-      <button onClick={getData}>Get Data</button>
+      <button onClick={getData}>Get Query/Data</button>
 
       {users.map((user) => {
         return (

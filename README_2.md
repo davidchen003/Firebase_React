@@ -107,3 +107,22 @@
   - map(), forEach()
 
 **Commit B3-1**
+
+- didn't implement
+
+  - querySelector, addEvenListener, Form.reset()
+
+- `addDoc` is a promise, can chain on `.then()`.
+- changed `aync/wait` to `.then()` on `createUser`
+- `updateUser` and `deleteUser` should be able to follow the suit
+
+## query
+
+- add `where()` to `query`, for both `onSnapshot` and `getDocs`
+- `getDocs()` query can be used to:
+  - update the web page
+  - export database, if no restriction specified in query
+- `orderBy()`
+- `serverTimeStamp()` for createdAt field (don't just use regular time function like `Date()` or `Now()`)
+
+**Commit B3-2**
