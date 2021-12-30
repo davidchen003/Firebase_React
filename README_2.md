@@ -102,5 +102,19 @@
 ## onSnapshot
 
 - realtime update: anytime there is a change to firebase data, it will automatically reflected on web page
+- video's syntax is outdate; modified based on the `master` branch
 
 **Commit B2-1** (branch 2, first commit)
+
+## getDocs()
+
+- video's syntax is outdate; modified based on the `master` branch
+- used `.then()` instead of `async/wait` as in commit 1
+
+## <Fragment>
+
+- render one version (`onSnapShot`) or another (`getDocs`)
+
+# stopped: too much stuff not working in firebase version 9!!
+
+**Commit B2-2**
