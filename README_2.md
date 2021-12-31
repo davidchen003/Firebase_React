@@ -126,3 +126,16 @@
 - `serverTimeStamp()` for createdAt field (don't just use regular time function like `Date()` or `Now()`)
 
 **Commit B3-2**
+
+# Auto_Filter branch
+
+- it loads `users` collection from firebase automatically (3 fields: `name`, `age`, and `desc`)
+- as you enter the searching word(s), it displays all the `desc` which have at least one matching word in it.
+- if you click the `Click for suggestions contain ALL the searching words` button, only the `desc` have all the search words will remain
+- click any of the matching `desc`, it will become the `text` entry
+- the next step could be once the selection clicked, the whole document (all the fields, not just desc) displays
+
+- change `{users2.map((user) => {` to `{users.map((user) => {`, then the normal database CRUD dominate the screen, so
+- should separate "get query of the database" and "auto-filter" into different menu selections
+
+**Commit B4-1**
