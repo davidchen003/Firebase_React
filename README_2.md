@@ -3,6 +3,8 @@
 
 - See [Fireship's course](https://www.youtube.com/watch?v=q5J5ho7YUhA) for hosting and emulators setup (which is not covered here).
 
+- Repository "React_Basics", branch "AcadeMind" ([course video](https://www.youtube.com/watch?v=Dorf8i6lCuk&t=27s) uses firebase "Realtime Database" (instead of "Cloud Firestore Database").
+
 - `node_modules` folder will not be pushed to Github and may be deleted from local holder to (once project is done) to save space. Simple run `npm install` to rebuild it.
 
 - **CSS** totally ignored in this course
